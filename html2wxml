@@ -1,0 +1,186 @@
+<script>此处内容不应该被显示</script>
+<style>此处内容不应该被显示</style>
+<div style="margin-bottom:15px"><img src="https://www.qwqoffice.com/html2wxml/images/html2wxml.jpg" /></div>
+<div style="margin-bottom:15px"><h1 style="color:#f44336;text-align:center">html2wxml 微信小程序富文本组件</h1></div>
+<div style="margin-bottom:15px">用于小程序的富文本解析组件，支持HTML及Markdown格式的转换，支持代码高亮</div>
+<div style="margin-bottom:15px">
+	<h2>支持内联样式</h2>
+	<span style="color:#0f0;text-decoration:underline">我是带有内联样式的span标签</span>
+</div>
+<div style="margin-bottom:15px">
+	<h2>支持class属性</h2>
+	<span class="blue">我是带有blue类的span标签</span>
+</div>
+<div style="margin-bottom:15px">
+	<h2>kbd标签</h2>
+	按下<kbd>Ctrl</kbd> + <kbd>F</kbd>搜索
+</div>
+<div style="margin-bottom:15px">
+	<h2>code标签</h2>
+	<code>这是一个&lt;code&gt;标签</code>
+</div>
+<div style="margin-bottom:15px">
+	<h2>blockquote标签</h2>
+	<blockquote>
+	有百折不挠的信念的所支持的人的意志，比那些似乎是无敌的物质力量有更强大的威力。<cite>——爱因斯坦</cite>
+	</blockquote>
+</div>
+<div style="margin-bottom:15px">
+<h2>pre标签及语法高亮</h2>
+<pre>add_action( 'wp_ajax_nopriv_resize_img', 'ws_resize_img' );
+add_action( 'wp_ajax_resize_img', 'ws_resize_img' );
+
+//resize
+function ws_resize_img(){
+    if(isset($_GET['src'])){
+        $src = urldecode($_GET['src']);
+    }else{
+        exit;
+    }
+
+    $width = 300;
+    $height = 300;
+    $arr = getimagesize($src);  
+
+    header("Content-type: image/png");
+    $ext = pathinfo($src, PATHINFO_EXTENSION);
+    switch(strtolower($ext)){
+        case 'jpg':
+        case 'jpeg':
+            $src = imagecreatefromjpeg($src);
+            break;
+        case 'gif':
+            $src = imagecreatefromgif($src);
+            break;
+        case 'png':
+            $src = imagecreatefrompng($src);
+            break;
+        case 'wbmp':
+            $src = imagecreatefromwbmp($src);
+            break;
+        default:
+            exit;
+    }
+    //$src = imagecreatefromjpeg($src);
+    $image = imagecreatetruecolor($width, $height);
+    $bg = imagecolorallocate($image, 255, 255, 255);
+    imagefill($image, 0, 0, $bg);
+    imagecopyresampled($image, $src, 0, 0, 0, 0,$width,$height,$arr[0], $arr[1]);
+    imagepng($image);
+    imagedestroy($image);
+
+    exit;
+}</pre>
+</div>
+<div style="margin-bottom:15px">
+<h2>video标签</h2>
+	<video src="https://www.qwqoffice.com/html2wxml/video/small.mp4" controls="controls" poster="https://www.qwqoffice.com/html2wxml/video/poster.jpg"></video>
+</div>
+<div style="margin-bottom:15px">
+<h2>audio标签</h2>
+	<audio src="https://www.qwqoffice.com/html2wxml/audio/396131213056.m4a" controls="controls" name="起风了" author="买辣椒也用券" poster="https://www.qwqoffice.com/html2wxml/audio/poster.jpg"></audio>
+</div>
+<div style="margin-bottom:15px">
+	<h2>ul标签</h2>
+	<ul>
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+	</ul>
+</div>
+<div style="margin-bottom:15px">
+	<h2>ol标签</h2>
+	<ol>
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+	</ol>
+</div>
+<div style="margin-bottom:15px">
+	<h2>列表嵌套</h2>
+	<ul>
+		<li>我是  li</li>
+		<li>我是li
+			<ol>
+				<li>我是li	
+					<ol>
+						<li>我是li</li>
+						<li>我是li</li>
+					</ol>
+				</li>
+				<li>我是li
+					<ul>
+						<li>我是li</li>
+					</ul>
+				</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+				<li>我是li</li>
+			</ol>
+		</li>
+		<li>我是li</li>
+	</ul>
+</div>
+<div style="margin-bottom:15px">
+	<h2>hr标签</h2>
+	<span>下面是一条分割线</span>
+	<hr>
+</div>
+<div style="margin-bottom:15px">
+	<h2>img标签</h2>
+	<span>图片自适应及组图预览</span>
+	<p><img src="https://www.qwqoffice.com/attached/image/20161219/20161219225439_84533.png" /></p>
+	<p><img src="https://www.qwqoffice.com/attached/image/20180208/20180208232535_47069.png" /></p>
+	<p>
+		<img src="https://www.qwqoffice.com/attached/image/20161219/20161219230717_33340.png" />
+		<img src="https://www.qwqoffice.com/attached/image/20161219/20161219230750_20203.png" />
+		<img src="https://www.qwqoffice.com/attached/image/20161219/20161219230905_60625.png" />
+		<img src="https://www.qwqoffice.com/attached/image/20161219/20161219230952_72031.png" />
+	</p>
+</div>
+<div style="margin-bottom:15px">
+	<h2>table标签</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>标题1</th>
+				<th>标题2</th>
+				<th>标题3</th>
+				<th>标题4</th>
+				<th>标题5</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>cell1</td>
+				<td>cell2</td>
+				<td>cell3</td>
+				<td>cell4</td>
+				<td>cell5</td>
+			</tr>
+			<tr>
+				<td>cell1</td>
+				<td>cell2</td>
+				<td>这是一个非常非常非常非常长的单元格</td>
+				<td>cell4</td>
+				<td>cell5</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div style="margin-bottom:15px">
+	<h2>各种格式标签</h2>
+	<p style="text-indent:2em">
+		Lorem ipsum dolor sit amet, <a title="test link" href="#">test link</a> adipiscing elit. <strong>This is strong.</strong> Nullam dignissim convallis est. Quisque aliquam. <em>This is emphasized.</em> Donec faucibus. Nunc iaculis suscipit dui. 5<sup>3</sup> = 125. Water is H<sub>2</sub>O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.<cite>The New York Times</cite> (That’s a citation). <span style="text-decoration: underline;">Underline.</span> Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. To copy a file type <code>COPY <var>filename</var></code>.
+	</p>
+	<p style="text-indent:2em">
+		<del>Dinner’s at 5:00.</del><ins>Let’s make that 7.</ins>
+	</p>
+</div>
